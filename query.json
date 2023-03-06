@@ -1,0 +1,68 @@
+query fetchPublicationDetailsQuery($id: Int!) {
+  publikation: publication(id: $id) {
+    _id: id
+    _stringRep
+    _entityName
+    titelPublikation: title
+    publikationsTyp: typeDe
+    author: authors {
+      _stringRep: fullName
+      _entityName
+      fisPersid
+      orcid
+    }
+    herausgeber: editors {
+      _stringRep: fullName
+      _entityName
+      fisPersid
+      orcid
+    }
+    verlagsort: place
+    veroeffentlichungsJahr: year
+    organisationseinheit: organisationalUnit {
+      _id:id
+      _stringRep
+      _entityName
+      parentOrgaName
+    }
+    relevantFuerWeitere: hasMultipleOus
+    weitereOrganisationseinheiten: additionalOrganisationalUnits {
+      _id:id
+      _stringRep
+      _entityName
+      parentOrgaName
+    }
+    publicPubIdent: identifiers {
+      pubIdentTyp: type {
+        _entityName
+        _stringRep
+        kennung: key
+      }
+      wert: value
+    }
+    institution: issuingOrganisation
+    journal
+    verleger: publisher
+    journalNummer: issue
+    band: volume
+    istFinal: validated
+    seiteEnde: pageEnd
+    seiteStart: pageStart
+    serientitel: seriesTitle
+    sprache: language
+    buchtitel: bookTitle
+    validiert: validated
+    inProjekt: inProject
+    forschungsprojekt: project {
+      _id:id
+      _entityName
+      _stringRep
+    }
+    foerderer: fundingAgencies {
+      _entityName
+      _stringRep
+      name
+    }
+  }
+}
+
