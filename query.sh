@@ -5,7 +5,7 @@ URL='https://fob.uni-leipzig.de/anchorwheel/api'
 function myquery(){
 	id=$1
   QUERY='{ "query": "query { publication(id: '$id') { title } }" }'
-curl "$URL" -H 'Content-Type: application/json' --data "$QUERY" --request POST
+	curl "$URL" -H 'Content-Type: application/json' --data "$QUERY" --request POST --silent
 }
 
 is_first=true
