@@ -8,9 +8,16 @@ function myquery(){
 curl "$URL" -H 'Content-Type: application/json' --data "$QUERY" --request POST
 }
 
+is_first=true
+
 echo '['
 for i in {1..10}; do
-	myquery $i
+	if $is_first; then
+		is_first=false
+	else
+		echo ','
+	fi
+	myquery "$i"
 	echo
 done
 echo ']'
